@@ -1,16 +1,37 @@
-
-
+import { useQuery } from "@apollo/client"
+import { GET_ALL_QUOTES } from "../GQLoperations/Queries"
 export default function Home() {
+// useEffect is used to network request
+
+    /*/ traditional fetch se first code 
+      bhayt bara hota or second Bar bar Network call hote ha 
+    /*/
+    // for appllo client
+ const {loading,error,data} =  useQuery(GET_ALL_QUOTES)
+ 
+ if(loading) return <h1 style={{textAlign : 'center',
+ color:'green'}}> Loading.... </h1>
+ if(error){
+    //  console.log(error.message); //sir ke line
+    console.log(error);
+ }
+ if(data.quotes.length === 0){
+ return <h2 style={{textAlign : 'center'}}>No Quotes are Available</h2>
+ }
+
     return (
         <div className="container">
+        {
+            data.quotes.map(quote=>{
+                return(
             <blockquote>
-                <h6>if it works dont touch it</h6>
-                <p className="right-align">~ram</p>
+                <h6>{quote.name}</h6>
+                <p className="right-align">{quote.by.firstName}</p>
             </blockquote>
-            <blockquote>
-                <h6>if it works dont touch it</h6>
-                <p className="right-align">~ram</p>
-            </blockquote>
+
+                )
+            })
+        }
         </div>
     )
 }

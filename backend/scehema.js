@@ -10,7 +10,9 @@ type Query{
     user(_id:ID!):User 
     quotes:[Quote]
     # for find indiviual quotes 
-    iquote(by:ID!):[Quote]
+    iquote(by:ID!):[Quote],
+    # for profile client 
+    myprofile:User
 }
 
 type User ={

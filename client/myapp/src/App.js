@@ -1,17 +1,12 @@
-import Login from "./compontents/Login";
-import SingnUp from "./compontents/SingnUp";
-import Profile from "./compontents/Profile";
-import CreateQuote from "./compontents/CreateQuote";
-import Home from "./compontents/Home";
-
+import { useRoutes } from "react-router-dom";
+import Navbar from "./compontents/Navbar";
+import { router } from "./router";
 const App = () => {
+const Routers =   useRoutes(router)
   return (
     <>
-   {/* <Login /> */}
-   {/* <SingnUp /> */}
-   {/* <Profile /> */}
-   <CreateQuote />
-   <Home/>
+   <Navbar/>
+   {Routers}
     </>
   );
 }

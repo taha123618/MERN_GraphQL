@@ -1,3 +1,8 @@
+------------------------
+traditional fetch se first code 
+bhayt bara hota or second Bar bar Network call hote ha 
+------------------------
+
 ---------------------------
 query getAllUsers{
   users{

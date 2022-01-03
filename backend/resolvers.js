@@ -19,8 +19,16 @@ const resolvers = {
 
     // # for find indiviual quotes
     iquote: async (_,{by})=> 
-    await Quote.find({by})
+    await Quote.find({by}),
     // quotes.filter((quote)=>quote.by==by) 
+ 
+    // for profile client 
+    myprofile:async(_,args,{userId})=>{
+        if(!userId) throw new Error("You must Login First")
+       return await User.findOne({_id:userId})
+    }
+
+
     },
 
     User:{

@@ -6,7 +6,8 @@
 // Applo client store the data while when the 
 // user vist 2 time (chache krleta ha)
 
-import ApolloServer from 'apollo-server'
+// import ApolloServer from 'apollo-server'
+const { ApolloServer } = require('apollo-server');
 import {ApolloServerPluginLandingPageGraphQLPlayground} from 'apollo-server-core'
 import Jwt  from 'jsonwebtoken'
 import typeDefs from './scehema.js'
