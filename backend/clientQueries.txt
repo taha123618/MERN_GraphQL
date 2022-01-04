@@ -44,11 +44,70 @@ query getQuotebyUser{
     by
   }
 }
+-------------------
+
 -----------------
-query var
 query getQuoteByUser($quoteby:ID!){
   iquote(by:$quoteby){
     name
     by
   }
 }
+-------------------
+mutation createUser($userNew:UserInput!){
+  user:signupUserDummy(userNew:$userNew){ 
+    _id
+    email
+    firstName
+    lastName
+  }
+}
+
+{
+  "userNew": {
+    "firstName": "navin",
+    "lastName": "ssd",
+    "email": "sdsad@sd.com",
+    "password": "12345"
+  }
+}
+------------
+mutation createUser($userNew:UserInput!){
+  user:signupUser(userNew:$userNew){ 
+    _id
+    email
+    firstName
+    lastName
+  }
+}
+
+{
+  "userNew": {
+    "firstName": "navin",
+    "lastName": "sharma",
+    "email": "navin@navin.com",
+    "password": "12345"
+  }
+}
+
+--------
+mutation SigninUser($userSignin:UserSigninInput!){
+  user:signinUser(userSignin:$userSignin){ 
+    token
+  }
+}
+
+{
+  "userSignin": {
+    "email": "navin@navin.com",
+    "password": "12345"
+  }
+}
+------
+
+
+mutation createQuote{
+  quote:createQuote(name:"i am another nice quote")
+}
+
+--------

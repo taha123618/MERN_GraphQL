@@ -1,9 +1,12 @@
-import {gql} from 'apollo-server'
+// import {gql} from 'apollo-server'
+
+// for development buils the api to connect react to graphQL 
+import { gql } from 'apollo-server-express';
 
 // scehema 
 const typeDefs = gql `
 
-# Query for client s_ide 
+# Query for client side 
 type Query{
     users:[User]
     # for unique _identify by ID only for 1 user

@@ -1,23 +1,17 @@
 import { useQuery } from "@apollo/client"
-import { useNavigate } from "react-router-dom"
-import { GET_MY_PROFILE } from "../GQLoperations/Queries"
+import { useParams } from "react-router-dom"
+import { GET_USER_BY_ID } from "../GQLoperations/Queries";
 
-const Profile = () => {
 
-const navigate =  useNavigate()
-const {loading , error , data} = useQuery(GET_MY_PROFILE,{
-      /*/  is ko use is lye kia h take appllo 
-    cache ko first time or network dono ma 
-    data fetch kr ke rahkhe /*/
-    fetchPolicy:"cache-and-network"
+const OtherUserProfile = () => {
+
+// without login access dene ke lye 
+const {userid} = useParams()
+console.log(userid);
+const {loading , error , data} = useQuery(GET_USER_BY_ID,{
+    variables:{userid}
 })
 
-// for error accers se bhichne ke lye 
-if (!localStorage.getItem("token")) {
-    navigate('/login')
-    return <h2 style={{textAlign : 'center' , 
-    color:'red'}}>Unauthorized User</h2>
-} 
  if(loading) return 
 <h1 style={{textAlign : 'center'}}> Profile is Loading.... </h1>
    
@@ -53,4 +47,4 @@ if (error) {
     )
 }
 
-export default Profile
+export default OtherUserProfile

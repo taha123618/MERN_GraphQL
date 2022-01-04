@@ -11,7 +11,9 @@ import {
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
+  // uri: 'http://localhost:4000',
+  // for development 
+  uri: '/graphql',
   cache: new InMemoryCache(),
   // Authorization ma token attach kre ge 
   headers:{

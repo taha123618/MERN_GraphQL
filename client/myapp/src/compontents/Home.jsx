@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client"
+import { Link } from "react-router-dom";
 import { GET_ALL_QUOTES } from "../GQLoperations/Queries"
 export default function Home() {
 // useEffect is used to network request
@@ -7,7 +8,12 @@ export default function Home() {
       bhayt bara hota or second Bar bar Network call hote ha 
     /*/
     // for appllo client
- const {loading,error,data} =  useQuery(GET_ALL_QUOTES)
+ const {loading,error,data} =  useQuery(GET_ALL_QUOTES,{
+  /*/  is ko use is lye kia h take appllo 
+    cache ko first time or network dono ma 
+    data fetch kr ke rahkhe /*/
+    fetchPolicy:"cache-and-network"
+ })
  
  if(loading) return <h1 style={{textAlign : 'center',
  color:'green'}}> Loading.... </h1>
@@ -26,7 +32,9 @@ export default function Home() {
                 return(
             <blockquote>
                 <h6>{quote.name}</h6>
-                <p className="right-align">{quote.by.firstName}</p>
+                <Link to={`/profile/${quote.by._id}`}>
+               <p className="right-align">{quote.by.firstName}</p>
+                </Link>
             </blockquote>
 
                 )

@@ -1,4 +1,4 @@
-import {users , quotes} from './fakedb.js'
+// import {users , quotes} from './fakedb.js'
 import Mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import Jwt from 'jsonwebtoken';
@@ -66,7 +66,7 @@ throw new Error("Email or Password are Invalid")
 }    
 
 // create Token 
-const token = Jwt.sign({userId:user._id},SECRET_TOKEN)
+const token = Jwt.sign({userId:user._id},process.env.SECRET_TOKEN)
 return{token}
 
 },

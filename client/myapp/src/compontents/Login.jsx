@@ -53,7 +53,7 @@ loginUser({
         <form onSubmit={handleSubmit}>
         <input
         type="email"
-        placeholder="email"
+        placeholder="Email"
         name='email'
         onChange={handleChange}
         required
